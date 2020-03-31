@@ -1,11 +1,11 @@
 $(document).ready(function () {
     console.log('ready!')
 
-    let mealSearchValue = 
+    // let mealSearchValue = 
 
-    let drinkSearchValue = 
+    // let drinkSearchValue = 
 
-     on click function for selection of meal type
+    //  on click function for selection of meal type
     $('#meal-selection').click(function () {
         console.log('Clicked!')
         let mealSearchValue = $('#meal-searched').val();
@@ -15,7 +15,7 @@ $(document).ready(function () {
     });
 
     buildDrinkURL()
-     on click function for selection of drink
+    //  on click function for selection of drink
     $('#drink-selection').click(function () {
         console.log('Clicked!')
         let drinkSearchValue = $('#drink-searched').val();
