@@ -44,6 +44,10 @@ $(document).ready(function() {
         console.log(response);
         var mealName = response.meals[0].strMeal;
         var region = response.meals[0].strArea;
+        var instructions = response.meals[0].strInstructions;
+        var thumbnail = response.meals[0].strMealThumb;
+        var videoLink = response.meals[0].strYoutube;
+        var webLink = response.meals[0].strSource;
         var ingredients = [
           response.meals[0].strIngredient1,
           response.meals[0].strIngredient2,
@@ -63,10 +67,8 @@ $(document).ready(function() {
           response.meals[0].strIngredient17,
           response.meals[0].strIngredient18,
           response.meals[0].strIngredient19,
-          response.meals[0].strIngredient20,
+          response.meals[0].strIngredient20
         ];
-        console.log("buildMealURL -> ingredients", ingredients)
-      
         var measurments = [
           response.meals[0].strMeasure1,
           response.meals[0].strMeasure2,
@@ -86,39 +88,15 @@ $(document).ready(function() {
           response.meals[0].strMeasure17,
           response.meals[0].strMeasure18,
           response.meals[0].strMeasure19,
-          response.meals[0].strMeasure20,
+          response.meals[0].strMeasure20
         ];
-        console.log("buildMealURL -> measurments", measurments)
+        console.log("buildMealURL -> measurments", measurments);
+
+        $("");
+
         // append material here
       });
     });
   }
   buildMealURL();
-
-  function buildDrinkURL(drinkSearchValue) {
-    let drinkURL =
-      "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + "vodka"; //drinkSearchValue
-
-    $.ajax({
-      url: drinkURL,
-      method: "GET"
-    }).then(function(response) {
-      console.log(response);
-
-      let drinkID = response.drinks[0].idDrink;
-      console.log(drinkID);
-
-      var buildDrink =
-        "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + drinkID;
-
-      $.ajax({
-        url: buildDrink,
-        method: "GET"
-      }).then(function(response) {
-        console.log(response);
-
-        // append material here
-      });
-    });
-  }
 });
