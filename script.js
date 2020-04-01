@@ -76,10 +76,12 @@ $(document).ready(function() {
           response.drinks[0].strIngredient20
         ];
 
+
         let result = ingredients.filter(ingredient => ingredient);
         console.log(result);
 
-        let measurments = [
+
+        let measurements = [
           response.drinks[0].strMeasure1,
           response.drinks[0].strMeasure2,
           response.drinks[0].strMeasure3,
@@ -101,8 +103,8 @@ $(document).ready(function() {
           response.drinks[0].strMeasure20
         ];
 
-        // let result = ingredients.filter(ingredient => ingredient)
-        // console.log(result)
+        let measureResult = measurements.filter(measurement => measurement)
+        console.log(measureResult)
         // console.log("buildDrinkURL -> measurments", measurments);
 
         let drinkImg = "<img src=" + response.drinks[0].strDrinkThumb + ">";
@@ -113,6 +115,7 @@ $(document).ready(function() {
           .append(drinkImg);
         console.log(drinkImg);
         let cardBody = $("<div>").addClass("card-content drink-instructions");
+
         let drinkNameEl = $("<h1>")
           .addClass("card-title")
           .text(drinkName);
@@ -134,6 +137,7 @@ $(document).ready(function() {
         let drinkGlass = $("<p>")
           .addClass("card-content")
           .text("Suggested Glass: " + response.drinks[0].strGlass);
+
 
         // append material here
         cardBody.append(
