@@ -51,6 +51,8 @@ $(document).ready(function() {
       }).then(function(response) {
         console.log(response);
         let drinkName = response.drinks[0].strDrink;
+        console.log(drinkName)
+        // let drinkIng = response.drinks[0] 
         let ingredients = [
           response.drinks[0].strIngredient1,
           response.drinks[0].strIngredient2,
@@ -72,7 +74,23 @@ $(document).ready(function() {
           response.drinks[0].strIngredient19,
           response.drinks[0].strIngredient20
         ];
-        console.log("buildDrinkURL -> ingredients", ingredients);
+
+        // let newIngArray = [];
+        // for(let key in drinkIng){
+        //   if (typeof(drinkIng[key]) === "string"){
+        //   newIngArray.push(drinkIng[key]);
+          // let ingredient1 = drinkIng.[]
+          // console.log(ingredient1)
+          // }
+          // return newIngArray;
+          // console.log(`${key}:${drinkIng[key]}`)
+        // }
+
+        // for(let i = 0; i>= newIngArray.length; i++){
+          // console.log(newIngArray[i])
+
+        // }
+        // console.log("buildDrinkURL -> ingredients", ingredients);
 
         let measurments = [
           response.drinks[0].strMeasure1,
@@ -95,24 +113,25 @@ $(document).ready(function() {
           response.drinks[0].strMeasure19,
           response.drinks[0].strMeasure20
         ];
-        console.log("buildDrinkURL -> measurments", measurments);
+        // console.log("buildDrinkURL -> measurments", measurments);
 
-        let drinkImg = "<img src=" + response.drinks[0].strDrinkThumb
+        let drinkImg = "<img src=" + response.drinks[0].strDrinkThumb + ">"
 
         let card = $("<div>").addClass("card drinkCard")
-        let cardImg = $("<div>").addClass("card-image drinkImg").append(drinkImg);
+        let cardImg = $("<div>").addClass("card-image").append(drinkImg);
         console.log(drinkImg)
         let cardBody = $("<div>").addClass("card-content drink-instructions");
-        let drinkNameEl = $("<h1>").addClass("card-title").text(response.drinks[0].strDrink);
+        let drinkNameEl = $("<h1>").addClass("card-title").text(drinkName);
         let drinkInstructions = $("<p>").addClass("card-content").text(response.drinks[0].strInstructions);
-        let drinkIngredirents = $("<p>").addClass("card-content").text("Ingredients: " + response.drinks[0].strIngredient1);
-        let drinkMeasurement = $("<p>").addClass("card-content").text("Mearurements: " + response.drinks[0].strMeasure1);
+        let drinkIngredirents = $("<h4>").addClass("card-content").text("Ingredients :");
+        let drinkIngredirentList = $("<ul>").addClass("card-content").text(ingredients);
+        let drinkMeasurement = $("<h4>").addClass("card-content").text("Mearurements: ");
+        let drinkMeasurementList = $("<ul>").addClass("card-content").text(measurments);
         let drinkGlass = $("<p>").addClass("card-content").text("Suggested Glass: " + response.drinks[0].strGlass);
 
         // append material here
-        cardImg.append(cardBody)
-        cardBody.append(drinkNameEl,drinkInstructions,drinkIngredirents,drinkMeasurement,drinkGlass );
-        card.append(cardBody);
+        cardBody.append(drinkNameEl,drinkInstructions,drinkIngredirents, drinkIngredirentList, drinkMeasurement, drinkMeasurementList, drinkGlass );
+        card.append(cardImg, cardBody);
         $("#drink-recipie").append(card);
       });
     });
