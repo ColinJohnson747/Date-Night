@@ -59,20 +59,22 @@
 
             <div class="col s12 m6 l6">
                 <label>Drink Type</label>
-                <select class="browser-default">
+                <select id="drink-selected" class="browser-default">
                     <option value="" disabled selected>Choose your drink</option>
                     <option class="Random" value="0">Random</option>
-                    <option class="Gin" value="1">Gin</option>
-                    <option class="Vodka" value="2">Vodka</option>
-                    <option class="Rum" value="4">Rum</option>
-                    <option class="Scotch" value="5">Scotch</option>
-                    <option class="Everclear" value="6">Everclear</option>
-                    <option class="Whiskey" value="7">Whiskey</option>
-                    <option class="Tequila" value="8">Tequila</option>
+                    <option class="Gin" value="gin">Gin</option>
+                    <option class="Vodka" value="vodka">Vodka</option>
+                    <option class="Rum" value="rum">Rum</option>
+                    <option class="Scotch" value="scotch">Scotch</option>
+                    <option class="Everclear" value="everclear">Everclear</option>
+                    <option class="Whiskey" value="whiskey">Whiskey</option>
+                    <option class="Tequila" value="tequila">Tequila</option>
                 </select>
+                <button class="btn waves-effect waves-light drink-selection" type="submit" name="action">Submit
+                </button>
             </div>
 
-            <!-- inser reciple below -->
+            <!-- insert reciple below -->
             <img class="drink-image"></img>
             <div class="drink-ingredients"></div>
             <div class="drink-steps"></div>
@@ -99,23 +101,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col s12 m6 l6">
-
-                <div class="card drinkCard">
-                    <div class="card-image drinkImg">
-                        <img
-                            src="https://www.nomadfoods.com/wp-content/uploads/2018/08/placeholder-1-e1533569576673-960x960.png">
-                        <span class="card-title drinkName">Card Title</span>
-
-                    </div>
-                    <div class="card-content drinkInstructions">
-                        <p>I am a very simple card. I am good at containing small bits of information.
-                            I am convenient because I require little markup to use effectively.</p>
-                    </div>
-                    <div class="card-action">
-                        <a href="#" class="drinkLink">This is a link</a>
-                    </div>
-                </div>
+            <div class="col s12 m6 l6" id='drink-recipie'>
             </div>
         </div>
     </div>
@@ -134,4 +120,3 @@
 
 
 </html>
-

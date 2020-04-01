@@ -1,7 +1,7 @@
 $(document).ready(function() {
   console.log("ready!");
 
-  //let mealSearchValue =
+  //let mealSearchValue = ;
 
   //let drinkSearchValue = ;
 
@@ -14,40 +14,45 @@ $(document).ready(function() {
     buildMealURL(mealSearchValue);
   });
 
-  buildDrinkURL();
+  
   // on click function for selection of drink
-  $("#drink-selection").click(function() {
+  $(".drink-selection").click(function() {
     console.log("Clicked!");
-    let drinkSearchValue = $("#drink-searched").val();
-    $("#drink-searched").val("");
+    let drinkSearchValue = $("#drink-selected").val();
+    console.log("drinkSearchValue", drinkSearchValue)
+    $("#drink-selected").val('');
 
-    builDrink(drinkSearchValue);
+    buildDrinkURL(drinkSearchValue);
   });
 
-  function buildDrinkURL() {
+  function buildDrinkURL(drinkSearchValue) {
     let drinkURL =
-      "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + "vodka";
+      "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + drinkSearchValue;
+      console.log(drinkURL)
 
     $.ajax({
       url: drinkURL,
       method: "GET"
     }).then(function(response) {
       console.log(response);
+      $('#drink-recipie').empty();
       let drinkLenght = response.drinks.length;
       let randomNumber = Math.floor(Math.random() * (drinkLenght + 1));
 
       let drinkID = response.drinks[randomNumber].idDrink;
       console.log(drinkID);
 
-      var buildDrink =
+      var buildDrinkIdURL =
         "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + drinkID;
 
       $.ajax({
-        url: buildDrink,
+        url: buildDrinkIdURL,
         method: "GET"
       }).then(function(response) {
         console.log(response);
         let drinkName = response.drinks[0].strDrink;
+        console.log(drinkName)
+        // let drinkIng = response.drinks[0] 
         let ingredients = [
           response.drinks[0].strIngredient1,
           response.drinks[0].strIngredient2,
@@ -69,7 +74,9 @@ $(document).ready(function() {
           response.drinks[0].strIngredient19,
           response.drinks[0].strIngredient20
         ];
-        console.log("buildDrinkURL -> ingredients", ingredients);
+
+        let result = ingredients.filter(ingredient => ingredient)
+        console.log(result)
 
         let measurments = [
           response.drinks[0].strMeasure1,
@@ -92,37 +99,29 @@ $(document).ready(function() {
           response.drinks[0].strMeasure19,
           response.drinks[0].strMeasure20
         ];
-        console.log("buildDrinkURL -> measurments", measurments);
 
-        let card = $("<div>")
-          .addClass("card-image")
-          .append(response.strDrinkThumb);
-        let cardBody = $("<div>").addClass("card-content");
-        let drinkNameEl = $("<h1>")
-          .addClass("card-title")
-          .text(response.drinks.strDrink);
-        let drinkInstructions = $("<p>")
-          .addClass("card-content")
-          .text(response.strInstructions);
-        let drinkIngredirents = $("<p>")
-          .addClass("card-content")
-          .text("Ingredients: " + response.strIngredient1);
-        let drinkMeasurement = $("<p>")
-          .addClass("card-content")
-          .text("Ingredients: " + response.strMeasure1);
-        let drinkGlass = $("<p>")
-          .addClass("card-content")
-          .text("Suggested Glass: " + response.strGlass);
+        // let result = ingredients.filter(ingredient => ingredient)
+        // console.log(result)
+        // console.log("buildDrinkURL -> measurments", measurments);
+
+        let drinkImg = "<img src=" + response.drinks[0].strDrinkThumb + ">"
+
+        let card = $("<div>").addClass("card drinkCard")
+        let cardImg = $("<div>").addClass("card-image").append(drinkImg);
+        console.log(drinkImg)
+        let cardBody = $("<div>").addClass("card-content drink-instructions");
+        let drinkNameEl = $("<h1>").addClass("card-title").text(drinkName);
+        let drinkInstructions = $("<p>").addClass("card-content").text(response.drinks[0].strInstructions);
+        let drinkIngredirents = $("<h4>").addClass("card-content").text("Ingredients :");
+        let drinkIngredirentList = $("<ul>").addClass("card-content").text(result);
+        let drinkMeasurement = $("<h4>").addClass("card-content").text("Mearurements: ");
+        let drinkMeasurementList = $("<ul>").addClass("card-content").text(measurments);
+        let drinkGlass = $("<p>").addClass("card-content").text("Suggested Glass: " + response.drinks[0].strGlass);
 
         // append material here
-        cardBody.append(
-          drinkNameEl,
-          drinkInstructions,
-          drinkIngredirents,
-          drinkMeasurement,
-          drinkGlass
-        );
-        $("#drink").append(card);
+        cardBody.append(drinkNameEl,drinkInstructions,drinkIngredirents, drinkIngredirentList, drinkMeasurement, drinkMeasurementList, drinkGlass );
+        card.append(cardImg, cardBody);
+        $("#drink-recipie").append(card);
       });
     });
   }
@@ -208,5 +207,5 @@ $(document).ready(function() {
       });
     });
   }
-  buildMealURL();
+
 });
