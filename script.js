@@ -42,11 +42,11 @@ $(document).ready(function() {
       let drinkID = response.drinks[randomNumber].idDrink;
       console.log(drinkID);
 
-      var buildDrink =
+      var buildDrinkIdURL =
         "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + drinkID;
 
       $.ajax({
-        url: buildDrink,
+        url: buildDrinkIdURL,
         method: "GET"
       }).then(function(response) {
         console.log(response);
@@ -110,7 +110,8 @@ $(document).ready(function() {
         let drinkGlass = $("<p>").addClass("card-content").text("Suggested Glass: " + response.drinks[0].strGlass);
 
         // append material here
-        cardBody.append(cardImg, drinkNameEl,drinkInstructions,drinkIngredirents,drinkMeasurement,drinkGlass );
+        cardImg.append(cardBody)
+        cardBody.append(drinkNameEl,drinkInstructions,drinkIngredirents,drinkMeasurement,drinkGlass );
         card.append(cardBody);
         $("#drink-recipie").append(card);
       });
