@@ -75,10 +75,10 @@ $(document).ready(function() {
           response.drinks[0].strIngredient20
         ];
 
-        let result = ingredients.filter(ingredient => ingredient)
-        console.log(result)
+        let ingResult = ingredients.filter(ingredient => ingredient)
+        console.log(ingResult)
 
-        let measurments = [
+        let measurements = [
           response.drinks[0].strMeasure1,
           response.drinks[0].strMeasure2,
           response.drinks[0].strMeasure3,
@@ -100,8 +100,8 @@ $(document).ready(function() {
           response.drinks[0].strMeasure20
         ];
 
-        // let result = ingredients.filter(ingredient => ingredient)
-        // console.log(result)
+        let measureResult = measurements.filter(measurement => measurement)
+        console.log(measureResult)
         // console.log("buildDrinkURL -> measurments", measurments);
 
         let drinkImg = "<img src=" + response.drinks[0].strDrinkThumb + ">"
@@ -113,9 +113,9 @@ $(document).ready(function() {
         let drinkNameEl = $("<h1>").addClass("card-title").text(drinkName);
         let drinkInstructions = $("<p>").addClass("card-content").text(response.drinks[0].strInstructions);
         let drinkIngredirents = $("<h4>").addClass("card-content").text("Ingredients :");
-        let drinkIngredirentList = $("<ul>").addClass("card-content").text(result);
+        let drinkIngredirentList = $("<ul>").addClass("card-content").text(ingResult);
         let drinkMeasurement = $("<h4>").addClass("card-content").text("Mearurements: ");
-        let drinkMeasurementList = $("<ul>").addClass("card-content").text(measurments);
+        let drinkMeasurementList = $("<ul>").addClass("card-content").text(measureResult);
         let drinkGlass = $("<p>").addClass("card-content").text("Suggested Glass: " + response.drinks[0].strGlass);
 
         // append material here
