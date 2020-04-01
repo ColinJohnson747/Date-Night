@@ -75,22 +75,8 @@ $(document).ready(function() {
           response.drinks[0].strIngredient20
         ];
 
-        // let newIngArray = [];
-        // for(let key in drinkIng){
-        //   if (typeof(drinkIng[key]) === "string"){
-        //   newIngArray.push(drinkIng[key]);
-          // let ingredient1 = drinkIng.[]
-          // console.log(ingredient1)
-          // }
-          // return newIngArray;
-          // console.log(`${key}:${drinkIng[key]}`)
-        // }
-
-        // for(let i = 0; i>= newIngArray.length; i++){
-          // console.log(newIngArray[i])
-
-        // }
-        // console.log("buildDrinkURL -> ingredients", ingredients);
+        let result = ingredients.filter(ingredient => ingredient)
+        console.log(result)
 
         let measurments = [
           response.drinks[0].strMeasure1,
@@ -113,6 +99,9 @@ $(document).ready(function() {
           response.drinks[0].strMeasure19,
           response.drinks[0].strMeasure20
         ];
+
+        // let result = ingredients.filter(ingredient => ingredient)
+        // console.log(result)
         // console.log("buildDrinkURL -> measurments", measurments);
 
         let drinkImg = "<img src=" + response.drinks[0].strDrinkThumb + ">"
@@ -124,7 +113,7 @@ $(document).ready(function() {
         let drinkNameEl = $("<h1>").addClass("card-title").text(drinkName);
         let drinkInstructions = $("<p>").addClass("card-content").text(response.drinks[0].strInstructions);
         let drinkIngredirents = $("<h4>").addClass("card-content").text("Ingredients :");
-        let drinkIngredirentList = $("<ul>").addClass("card-content").text(ingredients);
+        let drinkIngredirentList = $("<ul>").addClass("card-content").text(result);
         let drinkMeasurement = $("<h4>").addClass("card-content").text("Mearurements: ");
         let drinkMeasurementList = $("<ul>").addClass("card-content").text(measurments);
         let drinkGlass = $("<p>").addClass("card-content").text("Suggested Glass: " + response.drinks[0].strGlass);
