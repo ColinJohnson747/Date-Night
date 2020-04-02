@@ -137,10 +137,10 @@ $(document).ready(function () {
         let drinkInstructions = $("<p>").addClass("card-content").text(response.drinks[0].strInstructions);
 
 
-
-        let table = $("<table>").addClass("responsive-table")
-        let thread = $("thread")
-        let header = $("<tr>")
+        let row = $("<div>").addClass("row")
+        let columnOne = $("<div>").addClass("col s6")
+        let columnTwo = $("<div>").addClass("col s6")
+        
         let drinkIngredirents = $("<th>").addClass("card-content").text("Ingredients:");
         let drinkMeasurement = $("<th>").addClass("card-content").text("Mearurements:");
         let tableBody = $("<tbody>")
@@ -159,25 +159,16 @@ $(document).ready(function () {
 
 
         // append material here
-
-        tableRow.append(ingResult,
-          measureResult)
-        tableBody.append(
-          header,
-          tableRow,
-          
-          )
-        table.append(
-          thread,
-          header,
-          drinkIngredirents,
-          drinkMeasurement,
-          tableBody
+          row.append(columnOne,columnTwo)
+        columnOne.append(drinkIngredirents,
+          ingResult)
+        columnTwo.append(drinkMeasurement, 
+          measureResult
           )
         cardBody.append(
           drinkNameEl,
           drinkInstructions,
-          table,
+          row,
           drinkGlass
         );
         card.append(cardImg, cardBody);
