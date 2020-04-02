@@ -1,10 +1,6 @@
 $(document).ready(function () {
   console.log("ready!");
 
-  //let mealSearchValue = ;
-
-  //let drinkSearchValue = ;
-
   // on click function for selection of meal type
   $(".meal-selection").click(function () {
     console.log("Clicked!");
@@ -12,10 +8,9 @@ $(document).ready(function () {
     if ($("#meal-searched").val() === "Random") {
       let mealID = Math.floor(Math.random() * (24))
       console.log(mealID)
-     let mealSearchValue = $('#' + mealID).val();
-     buildMealURL(mealSearchValue);
-    }
-    else {
+      let mealSearchValue = $('#' + mealID).val();
+      buildMealURL(mealSearchValue);
+    } else {
       let mealSearchValue = $("#meal-searched").val();
       $("#meal-searched").val("");
 
@@ -34,13 +29,12 @@ $(document).ready(function () {
       let drinkSearchValue = $("#" + drinkID).val()
 
       buildDrinkURL(drinkSearchValue)
-    }
-    else {
-    let drinkSearchValue = $("#drink-selected").val();
-    console.log("drinkSearchValue", drinkSearchValue);
-    $("#drink-selected").val("");
+    } else {
+      let drinkSearchValue = $("#drink-selected").val();
+      console.log("drinkSearchValue", drinkSearchValue);
+      $("#drink-selected").val("");
 
-    buildDrinkURL(drinkSearchValue);
+      buildDrinkURL(drinkSearchValue);
     }
   });
 
@@ -123,13 +117,7 @@ $(document).ready(function () {
 
         let measureResult = measurements.filter(measurement => measurement);
 
-
-        console.log(measureResult);
-        // console.log("buildDrinkURL -> measurments", measurments);
-
-
         let drinkImg = "<img src=" + response.drinks[0].strDrinkThumb + ">";
-
         let card = $("<div>").addClass("card drinkCard");
         let cardImg = $("<div>").addClass("card-image").append(drinkImg);
         let cardBody = $("<div>").addClass("card-content drink-instructions");
@@ -137,34 +125,31 @@ $(document).ready(function () {
         let drinkInstructions = $("<p>").addClass("card-content").text(response.drinks[0].strInstructions);
 
 
-        let row = $("<div>").addClass("row")
-        let columnOne = $("<div>").addClass("col s6")
-        let columnTwo = $("<div>").addClass("col s6")
-        
-        let drinkIngredirents = $("<th>").addClass("card-content").text("Ingredients:");
-        let drinkMeasurement = $("<th>").addClass("card-content").text("Mearurements:");
-        let tableBody = $("<tbody>")
-        let tableRow = $("<tr>")
+        let row = $("<div>").addClass("row");
+        let columnOne = $("<div>").addClass("col s6");
+        let columnTwo = $("<div>").addClass("col s6");
+        let drinkIngredirents = $("<tr>").addClass("card-content strong").text("Ingredients:");
+        let drinkMeasurement = $("<tr>").addClass("card-content strong").text("Mearurements:");
 
-      
-        measureResult = jQuery.map(measureResult, function(measurement){
-        return $("<tr>").addClass("card-content").text(measurement)
-        })
 
-        ingResult = jQuery.map(ingResult, function(ingredient){
+        measureResult = jQuery.map(measureResult, function (measurement) {
+          return $("<tr>").addClass("card-content").text(measurement)
+        });
+
+        ingResult = jQuery.map(ingResult, function (ingredient) {
           return $("<tr>").addClass("card-content").text(ingredient)
-          })
-        
+        });
+
         let drinkGlass = $("<p>").addClass("card-content").text("Suggested Glass: " + response.drinks[0].strGlass);
 
 
         // append material here
-          row.append(columnOne,columnTwo)
-        columnOne.append(drinkIngredirents,
-          ingResult)
-        columnTwo.append(drinkMeasurement, 
-          measureResult
-          )
+        row.append(columnOne, columnTwo);
+        columnOne.append(drinkMeasurement,
+          measureResult);
+        columnTwo.append(drinkIngredirents,
+          ingResult
+        );
         cardBody.append(
           drinkNameEl,
           drinkInstructions,
@@ -250,7 +235,9 @@ $(document).ready(function () {
         ];
 
 
-        var measureResultMeal = measurements.filter(function (entry) { return entry.trim() != ''; })
+        var measureResultMeal = measurements.filter(function (entry) {
+          return entry.trim() != '';
+        })
         console.log("buildMealURL -> measureResultMeal", measureResultMeal)
 
 
