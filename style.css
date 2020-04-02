@@ -2,9 +2,13 @@ body {
 	background: linear-gradient(-45deg, #4b1800, #6e002a, #186885, #275a34);
 	background-size: 400% 400%;
 	animation: gradient 30s ease infinite;
-	font-family: 'Yrsa', serif;
-	
-	
+}
+
+body, 
+label,
+select,
+.btn {
+	font-family: 'Yrsa', serif;	
 }
 
 h1,
@@ -26,10 +30,12 @@ label {
 
 label, 
 select {
-
 	font-size: large;
-	font-family: 'Yrsa', serif;
 	margin-bottom: 10px;
+}
+
+.col {
+	margin-top: 10px;
 }
 
 
