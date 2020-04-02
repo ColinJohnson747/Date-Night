@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
   console.log("ready!");
 
   //let mealSearchValue = ;
@@ -6,22 +6,42 @@ $(document).ready(function() {
   //let drinkSearchValue = ;
 
   // on click function for selection of meal type
-  $(".meal-selection").click(function() {
+  $(".meal-selection").click(function () {
     console.log("Clicked!");
-    let mealSearchValue = $("#meal-searched").val();
-    $("#meal-searched").val("");
 
-    buildMealURL(mealSearchValue);
+    if ($("#meal-searched").val() === "Random") {
+      let mealID = Math.floor(Math.random() * (24))
+      console.log(mealID)
+     let mealSearchValue = $('#' + mealID).val();
+     buildMealURL(mealSearchValue);
+    }
+    else {
+      let mealSearchValue = $("#meal-searched").val();
+      $("#meal-searched").val("");
+
+      buildMealURL(mealSearchValue);
+    }
   });
 
   // on click function for selection of drink
-  $(".drink-selection").click(function() {
+  $(".drink-selection").click(function () {
     console.log("Clicked!");
+
+    if ($("#drink-selected").val() === "Random") {
+      let drinkID = Math.floor(Math.random() * (8)) + 24;
+      console.log(drinkID)
+
+      let drinkSearchValue = $("#" + drinkID).val()
+
+      buildDrinkURL(drinkSearchValue)
+    }
+    else {
     let drinkSearchValue = $("#drink-selected").val();
     console.log("drinkSearchValue", drinkSearchValue);
     $("#drink-selected").val("");
 
     buildDrinkURL(drinkSearchValue);
+    }
   });
 
   function buildDrinkURL(drinkSearchValue) {
@@ -33,7 +53,7 @@ $(document).ready(function() {
     $.ajax({
       url: drinkURL,
       method: "GET"
-    }).then(function(response) {
+    }).then(function (response) {
       console.log(response);
       $("#drink-recipie").empty();
       let drinkLenght = response.drinks.length;
@@ -48,7 +68,7 @@ $(document).ready(function() {
       $.ajax({
         url: buildDrinkIdURL,
         method: "GET"
-      }).then(function(response) {
+      }).then(function (response) {
         console.log(response);
         let drinkName = response.drinks[0].strDrink;
         console.log(drinkName);
@@ -101,7 +121,7 @@ $(document).ready(function() {
         ];
 
         let measureResult = measurements.filter(measurement => measurement);
-        
+
         console.log(measureResult);
         // console.log("buildDrinkURL -> measurments", measurments);
 
@@ -152,7 +172,7 @@ $(document).ready(function() {
     $.ajax({
       url: mealURL,
       method: "GET"
-    }).then(function(response) {
+    }).then(function (response) {
       console.log(response);
       $("#meal-recipie").empty();
       var foodArrayLength = response.meals.length;
@@ -167,7 +187,7 @@ $(document).ready(function() {
       $.ajax({
         url: buildMeal,
         method: "GET"
-      }).then(function(response) {
+      }).then(function (response) {
         console.log(response);
         var mealName = response.meals[0].strMeal;
 
@@ -214,13 +234,13 @@ $(document).ready(function() {
           response.meals[0].strMeasure18,
           response.meals[0].strMeasure19,
           response.meals[0].strMeasure20
-        ];        
-         
+        ];
 
-        var measureResultMeal = measurements.filter(function(entry) { return entry.trim() != ''; })
+
+        var measureResultMeal = measurements.filter(function (entry) { return entry.trim() != ''; })
         console.log("buildMealURL -> measureResultMeal", measureResultMeal)
-        
-        
+
+
 
         let mealImg = "<img src=" + response.meals[0].strMealThumb + ">";
         let card = $("<div>").addClass("card mealCard");
@@ -261,4 +281,9 @@ $(document).ready(function() {
       });
     });
   }
+
+
+
+
+
 });

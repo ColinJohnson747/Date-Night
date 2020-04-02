@@ -7,3 +7,4 @@ With this website, you can choose what cuisine type you want to cook, and what k
 
 The website will give you a completed picture of what the meal and drink should look like, the ingredient list, and the instructions on how to make the meal! There is also a link to the original recipe page and occasionally, there's a video along with the recipes!
 
+
