@@ -142,7 +142,6 @@ $(document).ready(function () {
 
         let drinkGlass = $("<p>").addClass("card-content").text("Suggested Glass: " + response.drinks[0].strGlass);
 
-
         // append material here
         row.append(columnOne, columnTwo);
         columnOne.append(drinkMeasurement,
@@ -234,13 +233,10 @@ $(document).ready(function () {
           response.meals[0].strMeasure20
         ];
 
-
         var measureResultMeal = measurements.filter(function (entry) {
           return entry.trim() != '';
         })
         console.log("buildMealURL -> measureResultMeal", measureResultMeal)
-
-
 
         let mealImg = "<img src=" + response.meals[0].strMealThumb + ">";
         let card = $("<div>").addClass("card mealCard");
