@@ -102,6 +102,7 @@ $(document).ready(function() {
         ];
 
         let measureResult = measurements.filter(measurement => measurement);
+        
         console.log(measureResult);
         // console.log("buildDrinkURL -> measurments", measurments);
 
@@ -214,12 +215,13 @@ $(document).ready(function() {
           response.meals[0].strMeasure18,
           response.meals[0].strMeasure19,
           response.meals[0].strMeasure20
-        ];
-        
-        console.log(measurements, "measurements!")
+        ];        
+         
 
         var measureResultMeal = measurements.filter(function(entry) { return entry.trim() != ''; })
-        console.log(measureResultMeal)
+        console.log("buildMealURL -> measureResultMeal", measureResultMeal)
+        
+        
 
         let mealImg = "<img src=" + response.meals[0].strMealThumb + ">";
         let card = $("<div>").addClass("card mealCard");
@@ -241,7 +243,7 @@ $(document).ready(function() {
           .text(ingResult);
         let mealMeasurement = $("<h4>")
           .addClass("card-content")
-          .text("Mearurements: ");
+          .text("Measurements: ");
         let mealMeasurementList = $("<ul>")
           .addClass("card-content")
           .text(measureResultMeal);
