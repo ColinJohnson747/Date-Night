@@ -112,27 +112,20 @@ $(document).ready(function() {
           .append(drinkImg);
         console.log(drinkImg);
         let cardBody = $("<div>").addClass("card-content drink-instructions");
-        let drinkNameEl = $("<h1>")
-          .addClass("card-title")
-          .text(drinkName);
-        let drinkInstructions = $("<p>")
-          .addClass("card-content")
-          .text(response.drinks[0].strInstructions);
-        let drinkIngredirents = $("<h4>")
-          .addClass("card-content")
-          .text("Ingredients :");
-        let drinkIngredirentList = $("<ul>")
-          .addClass("card-content")
-          .text(ingResult);
-        let drinkMeasurement = $("<h4>")
-          .addClass("card-content")
-          .text("Mearurements: ");
-        let drinkMeasurementList = $("<ul>")
-          .addClass("card-content")
-          .text(measureResult);
-        let drinkGlass = $("<p>")
-          .addClass("card-content")
-          .text("Suggested Glass: " + response.drinks[0].strGlass);
+
+        let drinkNameEl = $("<h1>").addClass("card-title").text(drinkName);
+        let drinkInstructions = $("<p>").addClass("card-content").text(response.drinks[0].strInstructions);
+        // let drinkIngredirents = $("<h4>").addClass("card-content").text("Ingredients :");
+        let drinkIngredirents = $("<ul>").addClass("card-content").text("Ingredients :");
+
+        // need to figure out how to assign each ingredient to a li
+        let drinkIngredirentList = $("<li>").addClass("card-content").each(function (index) {
+          $(this).text(ingResult[index.length]);
+        });
+        let drinkMeasurement = $("<ul>").addClass("card-content").text("Mearurements: ");
+        let drinkMeasurementList = $("<li>").addClass("card-content").text(measureResult);
+        let drinkGlass = $("<p>").addClass("card-content").text("Suggested Glass: " + response.drinks[0].strGlass);
+
 
         // append material here
         cardBody.append(
