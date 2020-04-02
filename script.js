@@ -94,6 +94,7 @@ $(document).ready(function () {
           response.drinks[0].strIngredient19,
           response.drinks[0].strIngredient20
         ];
+        console.log(ingredients)
 
         let ingResult = ingredients.filter(ingredient => ingredient);
         console.log(ingResult);
@@ -122,40 +123,61 @@ $(document).ready(function () {
 
         let measureResult = measurements.filter(measurement => measurement);
 
+
         console.log(measureResult);
         // console.log("buildDrinkURL -> measurments", measurments);
+
 
         let drinkImg = "<img src=" + response.drinks[0].strDrinkThumb + ">";
 
         let card = $("<div>").addClass("card drinkCard");
-        let cardImg = $("<div>")
-          .addClass("card-image")
-          .append(drinkImg);
-        console.log(drinkImg);
+        let cardImg = $("<div>").addClass("card-image").append(drinkImg);
         let cardBody = $("<div>").addClass("card-content drink-instructions");
-
         let drinkNameEl = $("<h1>").addClass("card-title").text(drinkName);
         let drinkInstructions = $("<p>").addClass("card-content").text(response.drinks[0].strInstructions);
-        // let drinkIngredirents = $("<h4>").addClass("card-content").text("Ingredients :");
-        let drinkIngredirents = $("<ul>").addClass("card-content").text("Ingredients :");
 
-        // need to figure out how to assign each ingredient to a li
-        let drinkIngredirentList = $("<li>").addClass("card-content").each(function (index) {
-          $(this).text(ingResult[index.length]);
-        });
-        let drinkMeasurement = $("<ul>").addClass("card-content").text("Mearurements: ");
-        let drinkMeasurementList = $("<li>").addClass("card-content").text(measureResult);
+
+
+        let table = $("<table>").addClass("responsive-table")
+        let thread = $("thread")
+        let header = $("<tr>")
+        let drinkIngredirents = $("<th>").addClass("card-content").text("Ingredients:");
+        let drinkMeasurement = $("<th>").addClass("card-content").text("Mearurements:");
+        let tableBody = $("<tbody>")
+        let tableRow = $("<tr>")
+
+      
+        measureResult = jQuery.map(measureResult, function(measurement){
+        return $("<tr>").addClass("card-content").text(measurement)
+        })
+
+        ingResult = jQuery.map(ingResult, function(ingredient){
+          return $("<tr>").addClass("card-content").text(ingredient)
+          })
+        
         let drinkGlass = $("<p>").addClass("card-content").text("Suggested Glass: " + response.drinks[0].strGlass);
 
 
         // append material here
+
+        tableRow.append(ingResult,
+          measureResult)
+        tableBody.append(
+          header,
+          tableRow,
+          
+          )
+        table.append(
+          thread,
+          header,
+          drinkIngredirents,
+          drinkMeasurement,
+          tableBody
+          )
         cardBody.append(
           drinkNameEl,
           drinkInstructions,
-          drinkIngredirents,
-          drinkIngredirentList,
-          drinkMeasurement,
-          drinkMeasurementList,
+          table,
           drinkGlass
         );
         card.append(cardImg, cardBody);
