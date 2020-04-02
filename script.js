@@ -1,18 +1,16 @@
 $(document).ready(function() {
   console.log("ready!");
 
-  //let mealSearchValue = ;
-
-  //let drinkSearchValue = ;
-
   // on click function for selection of meal type
   $(".meal-selection").click(function() {
     console.log("Clicked!");
 
     if ($("#meal-searched").val() === "Random") {
-      let mealID = Math.floor(Math.random() * 24);
-      console.log(mealID);
-      let mealSearchValue = $("#" + mealID).val();
+
+      let mealID = Math.floor(Math.random() * (24))
+      console.log(mealID)
+      let mealSearchValue = $('#' + mealID).val();
+
       buildMealURL(mealSearchValue);
     } else {
       let mealSearchValue = $("#meal-searched").val();
@@ -32,7 +30,9 @@ $(document).ready(function() {
 
       let drinkSearchValue = $("#" + drinkID).val();
 
-      buildDrinkURL(drinkSearchValue);
+
+      buildDrinkURL(drinkSearchValue)
+
     } else {
       let drinkSearchValue = $("#drink-selected").val();
       console.log("drinkSearchValue", drinkSearchValue);
@@ -121,11 +121,9 @@ $(document).ready(function() {
 
         let measureResult = measurements.filter(measurement => measurement);
 
-        console.log(measureResult);
-        // console.log("buildDrinkURL -> measurments", measurments);
+
 
         let drinkImg = "<img src=" + response.drinks[0].strDrinkThumb + ">";
-
         let card = $("<div>").addClass("card drinkCard");
         let cardImg = $("<div>")
           .addClass("card-image")
@@ -142,12 +140,23 @@ $(document).ready(function() {
         let columnOne = $("<div>").addClass("col s6");
         let columnTwo = $("<div>").addClass("col s6");
 
-        let drinkIngredirents = $("<th>")
-          .addClass("card-content")
-          .text("Ingredients:");
-        let drinkMeasurement = $("<th>")
-          .addClass("card-content")
-          .text("Mearurements:");
+
+        let row = $("<div>").addClass("row");
+        let columnOne = $("<div>").addClass("col s6");
+        let columnTwo = $("<div>").addClass("col s6");
+        let drinkIngredirents = $("<tr>").addClass("card-content strong").text("Ingredients:");
+        let drinkMeasurement = $("<tr>").addClass("card-content strong").text("Mearurements:");
+
+
+        measureResult = jQuery.map(measureResult, function (measurement) {
+          return $("<tr>").addClass("card-content").text(measurement)
+        });
+
+        ingResult = jQuery.map(ingResult, function (ingredient) {
+          return $("<tr>").addClass("card-content").text(ingredient)
+        });
+
+        let drinkGlass = $("<p>").addClass("card-content").text("Suggested Glass: " + response.drinks[0].strGlass);
 
         measureResult = jQuery.map(measureResult, function(measurement) {
           return $("<tr>")
@@ -167,9 +176,19 @@ $(document).ready(function() {
 
         // append material here
         row.append(columnOne, columnTwo);
-        columnOne.append(drinkIngredirents, ingResult);
-        columnTwo.append(drinkMeasurement, measureResult);
-        cardBody.append(drinkNameEl, drinkInstructions, row, drinkGlass);
+
+        columnOne.append(drinkMeasurement,
+          measureResult);
+        columnTwo.append(drinkIngredirents,
+          ingResult
+        );
+        cardBody.append(
+          drinkNameEl,
+          drinkInstructions,
+          row,
+          drinkGlass
+        );
+
         card.append(cardImg, cardBody);
         $("#drink-recipie").append(card);
       });
@@ -248,10 +267,15 @@ $(document).ready(function() {
           response.meals[0].strMeasure20
         ];
 
-        var measureResultMeal = measurements.filter(function(entry) {
-          return entry.trim() != "";
-        });
-        console.log("buildMealURL -> measureResultMeal", measureResultMeal);
+
+
+        var measureResultMeal = measurements.filter(function (entry) {
+          return entry.trim() != '';
+        })
+        console.log("buildMealURL -> measureResultMeal", measureResultMeal)
+
+
+
 
         let mealImg = "<img src=" + response.meals[0].strMealThumb + ">";
         let card = $("<div>").addClass("card mealCard");
@@ -304,4 +328,12 @@ $(document).ready(function() {
       });
     });
   }
+
+
+
+
+
+
 });
+
+
