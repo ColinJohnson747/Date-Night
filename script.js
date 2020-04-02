@@ -51,7 +51,7 @@ $(document).ready(function() {
     $.ajax({
       url: drinkURL,
       method: "GET"
-    }).then(function(response) {
+    }).then(function (response) {
       console.log(response);
       $("#drink-recipie").empty();
       let drinkLenght = response.drinks.length;
@@ -66,7 +66,7 @@ $(document).ready(function() {
       $.ajax({
         url: buildDrinkIdURL,
         method: "GET"
-      }).then(function(response) {
+      }).then(function (response) {
         console.log(response);
         let drinkName = response.drinks[0].strDrink;
         console.log(drinkName);
@@ -92,7 +92,7 @@ $(document).ready(function() {
           response.drinks[0].strIngredient19,
           response.drinks[0].strIngredient20
         ];
-        console.log(ingredients);
+        console.log(ingredients)
 
         let ingResult = ingredients.filter(ingredient => ingredient);
         console.log(ingResult);
@@ -121,24 +121,12 @@ $(document).ready(function() {
 
         let measureResult = measurements.filter(measurement => measurement);
 
-
-
         let drinkImg = "<img src=" + response.drinks[0].strDrinkThumb + ">";
         let card = $("<div>").addClass("card drinkCard");
-        let cardImg = $("<div>")
-          .addClass("card-image")
-          .append(drinkImg);
+        let cardImg = $("<div>").addClass("card-image").append(drinkImg);
         let cardBody = $("<div>").addClass("card-content drink-instructions");
-        let drinkNameEl = $("<h1>")
-          .addClass("card-title")
-          .text(drinkName);
-        let drinkInstructions = $("<p>")
-          .addClass("card-content")
-          .text(response.drinks[0].strInstructions);
-
-        let row = $("<div>").addClass("row");
-        let columnOne = $("<div>").addClass("col s6");
-        let columnTwo = $("<div>").addClass("col s6");
+        let drinkNameEl = $("<h1>").addClass("card-title").text(drinkName);
+        let drinkInstructions = $("<p>").addClass("card-content").text(response.drinks[0].strInstructions);
 
 
         let row = $("<div>").addClass("row");
@@ -158,25 +146,9 @@ $(document).ready(function() {
 
         let drinkGlass = $("<p>").addClass("card-content").text("Suggested Glass: " + response.drinks[0].strGlass);
 
-        measureResult = jQuery.map(measureResult, function(measurement) {
-          return $("<tr>")
-            .addClass("card-content")
-            .text(measurement);
-        });
-
-        ingResult = jQuery.map(ingResult, function(ingredient) {
-          return $("<tr>")
-            .addClass("card-content")
-            .text(ingredient);
-        });
-
-        let drinkGlass = $("<p>")
-          .addClass("card-content")
-          .text("Suggested Glass: " + response.drinks[0].strGlass);
 
         // append material here
         row.append(columnOne, columnTwo);
-
         columnOne.append(drinkMeasurement,
           measureResult);
         columnTwo.append(drinkIngredirents,
@@ -188,12 +160,12 @@ $(document).ready(function() {
           row,
           drinkGlass
         );
-
         card.append(cardImg, cardBody);
         $("#drink-recipie").append(card);
       });
     });
   }
+
 
   //Build meal
   function buildMealURL(mealSearchValue) {
@@ -335,5 +307,3 @@ $(document).ready(function() {
 
 
 });
-
-
