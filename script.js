@@ -12,8 +12,8 @@ $(document).ready(function () {
     if ($("#meal-searched").val() === "Random") {
       let mealID = Math.floor(Math.random() * (24))
       console.log(mealID)
-     let mealSearchValue = $('#' + mealID).val();
-     buildMealURL(mealSearchValue);
+      let mealSearchValue = $('#' + mealID).val();
+      buildMealURL(mealSearchValue);
     }
     else {
       let mealSearchValue = $("#meal-searched").val();
@@ -36,11 +36,11 @@ $(document).ready(function () {
       buildDrinkURL(drinkSearchValue)
     }
     else {
-    let drinkSearchValue = $("#drink-selected").val();
-    console.log("drinkSearchValue", drinkSearchValue);
-    $("#drink-selected").val("");
+      let drinkSearchValue = $("#drink-selected").val();
+      console.log("drinkSearchValue", drinkSearchValue);
+      $("#drink-selected").val("");
 
-    buildDrinkURL(drinkSearchValue);
+      buildDrinkURL(drinkSearchValue);
     }
   });
 
@@ -140,21 +140,21 @@ $(document).ready(function () {
 
         let table = $("<table>").addClass("responsive-table")
         let thread = $("thread")
-        let header = $("<tr>")
+        // let header = $("<tr>")
         let drinkIngredirents = $("<th>").addClass("card-content").text("Ingredients:");
         let drinkMeasurement = $("<th>").addClass("card-content").text("Mearurements:");
         let tableBody = $("<tbody>")
         let tableRow = $("<tr>")
 
-      
-        measureResult = jQuery.map(measureResult, function(measurement){
-        return $("<tr>").addClass("card-content").text(measurement)
+
+        measureResult = jQuery.map(measureResult, function (measurement) {
+          return $("<tr>").addClass("card-content").text(measurement)
         })
 
-        ingResult = jQuery.map(ingResult, function(ingredient){
+        ingResult = jQuery.map(ingResult, function (ingredient) {
           return $("<tr>").addClass("card-content").text(ingredient)
-          })
-        
+        })
+
         let drinkGlass = $("<p>").addClass("card-content").text("Suggested Glass: " + response.drinks[0].strGlass);
 
 
@@ -163,17 +163,15 @@ $(document).ready(function () {
         tableRow.append(ingResult,
           measureResult)
         tableBody.append(
-          header,
           tableRow,
-          
-          )
+
+        )
         table.append(
           thread,
-          header,
           drinkIngredirents,
           drinkMeasurement,
           tableBody
-          )
+        )
         cardBody.append(
           drinkNameEl,
           drinkInstructions,
