@@ -271,11 +271,11 @@ $(document).ready(function () {
 
         let mealLinkHeader = $("<p>")
           .addClass("meal-link")
-          .text("Recipie Link: ");
+          
         let mealLink = $("<a>")
           .attr("href", response.meals[0].strSource)
           .attr("target", "_blank")
-          .text(response.meals[0].strSource);
+          .text("Click here for a linked recipie!");
 
         let row = $("<div>").addClass("row");
         let columnOne = $("<div>").addClass("col s6");
