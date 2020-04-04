@@ -132,8 +132,8 @@ $(document).ready(function() {
         let row = $("<div>").addClass("row");
         let columnOne = $("<div>").addClass("col s6");
         let columnTwo = $("<div>").addClass("col s6");
-        let drinkIngredirents = $("<tr>").addClass("card-content strong").text("Ingredients:");
-        let drinkMeasurement = $("<tr>").addClass("card-content strong").text("Mearurements:");
+        let drinkIngredirents = $("<th>").addClass("card-content").text("Ingredients:");
+        let drinkMeasurement = $("<th>").addClass("card-content").text("Mearurements:");
 
 
         measureResult = jQuery.map(measureResult, function (measurement) {

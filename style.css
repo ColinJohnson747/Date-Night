@@ -63,3 +63,9 @@ h4 {
     font-size: medium;
     font-weight: bold;
 }
+
+th {
+	text-align: left;
+	font-weight: bold;
+	
+}
