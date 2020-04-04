@@ -127,13 +127,11 @@ $(document).ready(function () {
         let cardImg = $("<div>").addClass("card-image").append(drinkImg);
         let cardBody = $("<div>").addClass("card-content drink-instructions");
         let drinkNameEl = $("<h1>").addClass("card-title").text(drinkName);
-        let drinkInstructions = $("<p>")
-          .addClass("card-content")
+        let drinkInstructions = $("<p>").addClass("card-content");
         let drinkList = $("<p>")
           .addClass("drinkList")
           .text(splitDrinkStr)
           .append(drinkInstructions);
-
 
         let row = $("<div>").addClass("row");
         let columnOne = $("<div>").addClass("col s6");
@@ -159,17 +157,9 @@ $(document).ready(function () {
 
         // append material here
         row.append(columnOne, columnTwo);
-        columnOne.append(drinkMeasurement,
-          measureResult);
-        columnTwo.append(drinkIngredirents,
-          ingResult
-        );
-        cardBody.append(
-          drinkNameEl,
-          drinkList,
-          row,
-          drinkGlass
-        );
+        columnOne.append(drinkMeasurement, measureResult);
+        columnTwo.append(drinkIngredirents, ingResult);
+        cardBody.append(drinkNameEl, drinkList, row, drinkGlass);
         card.append(cardImg, cardBody);
         $("#drink-recipie").append(card);
       });
@@ -183,7 +173,7 @@ $(document).ready(function () {
 
     $.ajax({
       url: mealURL,
-      method: "GET"
+      method: "GET",
     }).then(function (response) {
       console.log(response);
       $("#meal-recipie").empty();
@@ -198,7 +188,7 @@ $(document).ready(function () {
 
       $.ajax({
         url: buildMeal,
-        method: "GET"
+        method: "GET",
       }).then(function (response) {
         console.log(response);
         var mealName = response.meals[0].strMeal;
@@ -249,10 +239,9 @@ $(document).ready(function () {
         ];
 
         var measureResultMeal = measurements.filter(function (entry) {
-          return entry.trim() != '';
-        })
-        console.log("buildMealURL -> measureResultMeal", measureResultMeal)
-
+          return entry.trim() != "";
+        });
+        console.log("buildMealURL -> measureResultMeal", measureResultMeal);
 
         let stringIns = response.meals[0].strInstructions;
         let splitStr = stringIns.split(". ").join("\n");
@@ -262,26 +251,20 @@ $(document).ready(function () {
         let card = $("<div>").addClass("card mealCard");
         let cardImg = $("<div>").addClass("card-image").append(mealImg);
         let cardBody = $("<div>").addClass("card-content meal-instructions");
-        let mealNameEl = $("<h1>")
-          .addClass("card-title")
-          .text(mealName);
-        let mealInstructions = $("<div>")
-          .addClass("card-content")
+        let mealNameEl = $("<h1>").addClass("card-title").text(mealName);
+        let mealInstructions = $("<div>").addClass("card-content");
         let mealList = $("<p>")
           .addClass("mealList")
           .text(splitStr)
-          .append(mealInstructions) ;
+          .append(mealInstructions);
 
-
-       
-          let mealLinkHeader = $("<p>")
-            .addClass("meal-link")
-            .text("Recipie Link: ");
-          let mealLink = $("<a>")
-            .attr("href", response.meals[0].strSource)
-            .attr("target", "_blank")
-            .text(response.meals[0].strSource);
-        
+        let mealLinkHeader = $("<p>")
+          .addClass("meal-link")
+          .text("Recipie Link: ");
+        let mealLink = $("<a>")
+          .attr("href", response.meals[0].strSource)
+          .attr("target", "_blank")
+          .text(response.meals[0].strSource);
 
         let row = $("<div>").addClass("row");
         let columnOne = $("<div>").addClass("col s6");
@@ -294,14 +277,11 @@ $(document).ready(function () {
           .addClass("card-content")
           .text("Mearurements:");
 
-        measureResult = jQuery.map(measureResultMeal, function (measureResultMeal) {
-          return $("<tr>")
-            .addClass("card-content")
-            .text(measureResultMeal);
+        measureResult = jQuery.map(measureResultMeal, function (
+          measureResultMeal
+        ) {
+          return $("<tr>").addClass("card-content").text(measureResultMeal);
         });
-
-     
-
 
         ingResult = jQuery.map(ingResult, function (ingredient) {
           return $("<tr>").addClass("card-content").text(ingredient);
