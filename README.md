@@ -7,4 +7,11 @@ With this website, you can choose what cuisine type you want to cook, and what k
 
 The website will give you a completed picture of what the meal and drink should look like, the ingredient list, and the instructions on how to make the meal! There is also a link to the original recipe page and occasionally, there's a video along with the recipes!
 
+# Code
+The Date Night application was developed using HTML5, CSS, Javascript, JQuery, Materialize the deployed application can be found on git hub https://github.com/ColinJohnson747/Project-One or https://colinjohnson747.github.io/Project-One/
 
+# Contributors
+Joy Chen    
+Colin Johnson 
+Edrick Ngouyassa
+Travis Cultreri 
