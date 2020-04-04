@@ -138,14 +138,12 @@ $(document).ready(function () {
         let row = $("<div>").addClass("row");
         let columnOne = $("<div>").addClass("col s6");
         let columnTwo = $("<div>").addClass("col s6");
-
         let drinkIngredirents = $("<tr>")
           .addClass("card-content strong")
           .text("Ingredients:");
         let drinkMeasurement = $("<tr>")
           .addClass("card-content strong")
           .text("Mearurements:");
-
 
         measureResult = jQuery.map(measureResult, function (measurement) {
           return $("<tr>").addClass("card-content").text(measurement);
