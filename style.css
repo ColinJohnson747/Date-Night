@@ -52,6 +52,7 @@ select {
 .card-title {
 	color: black;
 	font-size: medium;
+	text-decoration: underline;
 }
 
 .card {
