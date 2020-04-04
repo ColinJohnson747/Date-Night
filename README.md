@@ -12,6 +12,6 @@ The Date Night application was developed using HTML5, CSS, Javascript, JQuery, M
 
 # Contributors
 Joy Chen    
-Colin Johnson 
-Edrick Ngouyassa
+Colin Johnson <br /> 
+Edrick Ngouyassa <br />
 Travis Cultreri 
