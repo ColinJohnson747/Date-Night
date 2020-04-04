@@ -182,7 +182,7 @@ $(document).ready(function () {
       method: "GET",
     }).then(function (response) {
       console.log(response);
-      //Empties out current recipie if one already exits
+      //Empties out current recipe if one already exits
       $("#meal-recipie").empty();
       //api returns an array of meals based on selected cusinie region, this parses out that length.
       var foodArrayLength = response.meals.length;
@@ -275,7 +275,7 @@ $(document).ready(function () {
         let mealLink = $("<a>")
           .attr("href", response.meals[0].strSource)
           .attr("target", "_blank")
-          .text("Click here for a linked recipie!");
+          .text("Click here for a linked recipe!");
 
         let row = $("<div>").addClass("row");
         let columnOne = $("<div>").addClass("col s6");
