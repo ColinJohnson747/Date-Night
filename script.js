@@ -312,7 +312,7 @@ $(document).ready(function () {
         columnOne.append(mealMeasurement, measureResult);
         columnTwo.append(mealIngredirents, ingResult);
 
-        cardBody.append(mealNameEl, mealInstructions, row, mealLinkHeader);
+        cardBody.append(mealNameEl, mealList, row, mealLinkHeader);
         // append material here
         card.append(cardImg, cardBody);
         $("#meal-recipie").append(card);
