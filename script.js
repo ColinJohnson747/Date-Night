@@ -183,7 +183,7 @@ $(document).ready(function () {
 
     $.ajax({
       url: mealURL,
-      method: "GET",
+      method: "GET"
     }).then(function (response) {
       console.log(response);
       $("#meal-recipie").empty();
@@ -198,7 +198,7 @@ $(document).ready(function () {
 
       $.ajax({
         url: buildMeal,
-        method: "GET",
+        method: "GET"
       }).then(function (response) {
         console.log(response);
         var mealName = response.meals[0].strMeal;
@@ -300,7 +300,7 @@ $(document).ready(function () {
             .text(measureResultMeal);
         });
 
-        
+     
 
 
         ingResult = jQuery.map(ingResult, function (ingredient) {
