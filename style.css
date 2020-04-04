@@ -10,6 +10,10 @@ body {
 	white-space:pre-wrap; 
 }
 
+.strong {
+	font-weight: bold;
+}
+
 body, 
 label,
 select,
