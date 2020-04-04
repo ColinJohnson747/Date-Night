@@ -5,7 +5,7 @@ Have you ever asked your date what they wanted to eat and they respond back with
 # How it works
 With this website, you can choose what cuisine type you want to cook, and what kind of alcohol you like, and this website will give you a culturally selected meal recipe, and an alcohol-related cocktail recipe. If you don't know what kind kind of cuisine you want, or if your date just won't select a cuisine, there is a random selection for you! Same thing with the alcohol! 
 
-The website will give you a completed picture of what the meal and drink should look like, the ingredient list, and the instructions on how to make the meal! There is also a link to the original recipe page!
+The website will give you a completed picture of what the meal and drink should look like, the ingredient list, and the instructions on how to make the meal! Occasionally there will be a link to the original recipe!
 
 # Date Night Demo
 ![Date Night Demo](demo/datenightdemo.gif)
