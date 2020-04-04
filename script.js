@@ -281,11 +281,11 @@ $(document).ready(function () {
         let columnOne = $("<div>").addClass("col s6");
         let columnTwo = $("<div>").addClass("col s6");
 
-        let mealIngredirents = $("<th>")
-          .addClass("card-content")
+        let mealIngredirents = $("<tr>")
+          .addClass("card-content strong")
           .text("Ingredients:");
-        let mealMeasurement = $("<th>")
-          .addClass("card-content")
+        let mealMeasurement = $("<tr>")
+          .addClass("card-content strong")
           .text("Mearurements:");
         //Create a List of measurements based on the returned Measurment array.
         measureResult = jQuery.map(measureResultMeal, function (
