@@ -4,6 +4,12 @@ body {
 	animation: gradient 30s ease infinite;
 }
 
+.mealList,
+.drinkList {
+
+	white-space:pre-wrap; 
+}
+
 body, 
 label,
 select,
